@@ -6,9 +6,18 @@ function Cart({ onClose }) {
     <>
       <div className="cart" method="dialog">
         <h2 className="">Your Cart</h2>
-        <CartItem />
-        <CartItem />
-        <CartItem />
+        <ul>
+          <li>
+            <CartItem />
+          </li>
+          <li>
+            <CartItem />
+          </li>
+          <li>
+            <CartItem />
+          </li>
+        </ul>
+
         <p className="cart-total"> $73.96</p>
         <div className="modal-actions">
           <button onClick={onClose} className=" text-button">

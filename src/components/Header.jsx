@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import logo from "../assets/logo.jpg";
 import Cart from "./Cart";
 import { createPortal } from "react-dom";
+import Checkout from "./Checkout";
 
 function Header() {
   const modal = useRef();
@@ -15,7 +16,8 @@ function Header() {
     <>
       {createPortal(
         <dialog className="modal " ref={modal}>
-          <Cart onClose={handleClose} />
+          {/* <Cart onClose={handleClose} /> */}
+          <Checkout onClose={handleClose} />
         </dialog>,
         document.getElementById("modal")
       )}
