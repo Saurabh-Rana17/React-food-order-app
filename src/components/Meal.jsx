@@ -6,9 +6,9 @@ function Meal({ mealName, mealPrice, mealDescription, mealImg }) {
       <img src={mealImg} alt="" />
       <h3>{mealName}</h3>
       <div className="meal-item-price">{mealPrice}</div>
-      <p className="item-description">{mealDescription}</p>
       <div className="meal-item-actions">
-        <button className="button meal-item-action">Add to Cart</button>
+        <p className="item-description">{mealDescription}</p>
+        <button className="button ">Add to Cart</button>
       </div>
     </div>
   );

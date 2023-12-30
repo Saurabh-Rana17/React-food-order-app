@@ -21,7 +21,10 @@ function MealSection() {
             mealName={item.name}
             mealImg={`http://localhost:3000/${item.image}`}
             mealDescription={item.description}
-            mealPrice={item.price}
+            mealPrice={new Intl.NumberFormat("en-US", {
+              style: "currency",
+              currency: "USD",
+            }).format(item.price)}
           />
         );
       })}
