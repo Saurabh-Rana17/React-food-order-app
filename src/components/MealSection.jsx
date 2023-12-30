@@ -19,7 +19,7 @@ function MealSection() {
           <Meal
             key={item.id}
             mealName={item.name}
-            mealImg={(item.image = "")}
+            mealImg={`http://localhost:3000/${item.image}`}
             mealDescription={item.description}
             mealPrice={item.price}
           />
