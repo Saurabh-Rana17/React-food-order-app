@@ -1,15 +1,12 @@
 import React from "react";
 
-function Meal() {
+function Meal({ mealName, mealPrice, mealDescription, mealImg }) {
   return (
     <div className="meal-item ">
-      <img src="" alt="" />
-      <h3>Mac & cheese</h3>
-      <div className="meal-item-price">$8.99</div>
-      <p className="item-description">
-        Creamy cheddar cheese mixed with perfectly cooked macaroni, topped with
-        crispy breadcrumbs. A classic comfort food.
-      </p>
+      <img src={mealImg} alt="" />
+      <h3>{mealName}</h3>
+      <div className="meal-item-price">{mealPrice}</div>
+      <p className="item-description">{mealDescription}</p>
       <div className="meal-item-actions">
         <button className="button meal-item-action">Add to Cart</button>
       </div>

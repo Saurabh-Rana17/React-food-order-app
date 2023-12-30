@@ -1,20 +1,30 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Meal from "./Meal";
 
 function MealSection() {
+  const [mealsArray, setMealsArray] = useState([]);
+
   useEffect(() => {
     async function fetchMeals() {
-      fetch("http://localhost:3000/");
+      const response = await fetch("http://localhost:3000/meals");
+      const data = await response.json();
+      setMealsArray(data);
     }
     fetchMeals();
   }, []);
   return (
     <div id="meals">
-      {/* MealSection */}
-      <Meal />
-      <Meal />
-      <Meal />
-      <Meal />
+      {mealsArray.map((item) => {
+        return (
+          <Meal
+            key={item.id}
+            mealName={item.name}
+            mealImg={(item.image = "")}
+            mealDescription={item.description}
+            mealPrice={item.price}
+          />
+        );
+      })}
     </div>
   );
 }
