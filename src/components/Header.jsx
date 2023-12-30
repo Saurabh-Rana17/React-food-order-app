@@ -9,7 +9,7 @@ function Header() {
   }
   return (
     <>
-      <dialog ref={modal}>
+      <dialog className="modal " ref={modal}>
         <Cart />
       </dialog>
       <div id="main-header">
