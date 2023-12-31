@@ -18,6 +18,7 @@ function MealSection() {
         return (
           <Meal
             key={item.id}
+            id={item.id}
             mealName={item.name}
             mealImg={`http://localhost:3000/${item.image}`}
             mealDescription={item.description}
