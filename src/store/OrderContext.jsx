@@ -5,6 +5,7 @@ export const OrderContext = createContext({
   addToCart: () => " ",
   increaseQuantity: () => "",
   decreaseQuantity: () => "",
+  removeItem: () => "",
 });
 
 function orderReducer(orderState, action) {
@@ -46,6 +47,14 @@ function orderReducer(orderState, action) {
         }
       });
       return { ...orderState, orderArray: newArray };
+    case "removeItem":
+      const tempArr = orderState.orderArray.filter(
+        (item) => item.id !== action.payload.id
+      );
+      return {
+        ...orderState,
+        orderArray: tempArr,
+      };
     default:
       break;
   }
@@ -56,6 +65,7 @@ export function OrderContextProvider({ children }) {
     userDetail: {},
     orderArray: [],
   });
+  console.log(orderState.orderArray);
 
   function addToCart(id, name, price) {
     orderDispatch({
@@ -86,11 +96,21 @@ export function OrderContextProvider({ children }) {
     });
   }
 
+  function removeItem(id) {
+    orderDispatch({
+      type: "removeItem",
+      payload: {
+        id: id,
+      },
+    });
+  }
+
   const orderContextValue = {
     orderState,
     addToCart,
     increaseQuantity,
     decreaseQuantity,
+    removeItem,
   };
 
   return (
