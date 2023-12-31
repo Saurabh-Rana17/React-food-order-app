@@ -2,10 +2,12 @@ import React, { useContext } from "react";
 import CartItem from "./CartItem";
 import { ModalContext } from "../store/ModalContext";
 import { OrderContext } from "../store/OrderContext";
+import calculateTotal from "../utils/calulateTotal";
 
 function Cart({ onClose }) {
   const { handleModal } = useContext(ModalContext);
   const { orderState } = useContext(OrderContext);
+  const total = calculateTotal(orderState.orderArray);
   return (
     <>
       <div className="cart" method="dialog">
@@ -24,7 +26,7 @@ function Cart({ onClose }) {
           })}
         </ul>
 
-        <p className="cart-total"> $73.96</p>
+        <p className="cart-total"> ${total}</p>
         <div className="modal-actions">
           <button onClick={onClose} className=" text-button">
             close

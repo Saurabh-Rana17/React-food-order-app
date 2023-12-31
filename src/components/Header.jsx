@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import Checkout from "./Checkout";
 import { ModalContext } from "../store/ModalContext";
 import { OrderContext } from "../store/OrderContext";
+import calculateTotal from "../utils/calulateTotal";
 
 function Header() {
   const { modalState, openCart } = useContext(ModalContext);
