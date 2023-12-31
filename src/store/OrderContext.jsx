@@ -3,6 +3,8 @@ import { createContext, useReducer } from "react";
 export const OrderContext = createContext({
   orderState: {},
   addToCart: () => " ",
+  increaseQuantity: () => "",
+  decreaseQuantity: () => "",
 });
 
 function orderReducer(orderState, action) {
@@ -24,6 +26,26 @@ function orderReducer(orderState, action) {
       const array = [...orderState.orderArray, orderObj];
       return { ...orderState, orderArray: array };
 
+    case "increaseQuantity":
+      const newArr = orderState.orderArray.map((item) => {
+        if (item.id === action.payload.id) {
+          const newItem = { ...item, quantity: item.quantity + 1 };
+          return newItem;
+        } else {
+          return item;
+        }
+      });
+      return { ...orderState, orderArray: newArr };
+    case "decreaseQuantity":
+      const newArray = orderState.orderArray.map((item) => {
+        if (item.id === action.payload.id) {
+          const newItem = { ...item, quantity: item.quantity - 1 };
+          return newItem;
+        } else {
+          return item;
+        }
+      });
+      return { ...orderState, orderArray: newArray };
     default:
       break;
   }
@@ -34,7 +56,6 @@ export function OrderContextProvider({ children }) {
     userDetail: {},
     orderArray: [],
   });
-  console.log(orderState.orderArray);
 
   function addToCart(id, name, price) {
     orderDispatch({
@@ -47,9 +68,29 @@ export function OrderContextProvider({ children }) {
     });
   }
 
+  function increaseQuantity(id) {
+    orderDispatch({
+      type: "increaseQuantity",
+      payload: {
+        id: id,
+      },
+    });
+  }
+
+  function decreaseQuantity(id) {
+    orderDispatch({
+      type: "decreaseQuantity",
+      payload: {
+        id: id,
+      },
+    });
+  }
+
   const orderContextValue = {
     orderState,
     addToCart,
+    increaseQuantity,
+    decreaseQuantity,
   };
 
   return (

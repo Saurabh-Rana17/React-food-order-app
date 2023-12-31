@@ -4,9 +4,11 @@ import Cart from "./Cart";
 import { createPortal } from "react-dom";
 import Checkout from "./Checkout";
 import { ModalContext } from "../store/ModalContext";
+import { OrderContext } from "../store/OrderContext";
 
 function Header() {
   const { modalState, openCart } = useContext(ModalContext);
+  const { orderState } = useContext(OrderContext);
   const modal = useRef();
   function handleClick() {
     modal.current.showModal();
@@ -34,7 +36,7 @@ function Header() {
           REACTFOOD
         </h1>
         <button onClick={handleClick} className="text-button">
-          Cart(3)
+          Cart({orderState.orderArray.length})
         </button>
       </div>
     </>

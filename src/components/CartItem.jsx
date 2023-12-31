@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
+import { OrderContext } from "../store/OrderContext";
 
-function CartItem() {
+function CartItem({ id, name, quantity, price }) {
+  const { increaseQuantity, decreaseQuantity } = useContext(OrderContext);
   return (
     <>
-      <div className="cart-item">
-        <p>sushi roll platter - 2 x $19.99</p>
-        <div className="cart-item-actions">
-          <button>-</button>
-          <button>2</button>
-          <button>+</button>
+      <li key={id}>
+        <div className="cart-item">
+          <p>
+            {name} - {quantity} x {price}
+          </p>
+          <div className="cart-item-actions">
+            <button onClick={() => decreaseQuantity(id)}>-</button>
+            <button> {quantity} </button>
+            <button onClick={() => increaseQuantity(id)}>+</button>
+          </div>
         </div>
-      </div>
+      </li>
     </>
   );
 }
