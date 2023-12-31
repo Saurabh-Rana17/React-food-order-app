@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import CartItem from "./CartItem";
+import { ModalContext } from "../store/ModalContext";
 
 function Cart({ onClose }) {
+  const { handleModal } = useContext(ModalContext);
   return (
     <>
       <div className="cart" method="dialog">
@@ -23,7 +25,7 @@ function Cart({ onClose }) {
           <button onClick={onClose} className=" text-button">
             close
           </button>
-          <button className="button" type="button">
+          <button onClick={handleModal} className="button" type="button">
             Go to Checkout
           </button>
         </div>

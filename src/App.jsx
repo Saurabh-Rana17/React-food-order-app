@@ -1,11 +1,14 @@
 import React from "react";
 import Header from "./components/Header";
 import MealSection from "./components/MealSection";
+import { ModalContextProvider } from "./store/ModalContext";
 
 function App() {
   return (
     <>
-      <Header />
+      <ModalContextProvider>
+        <Header />
+      </ModalContextProvider>
       <MealSection />
     </>
   );

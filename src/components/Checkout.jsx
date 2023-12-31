@@ -13,12 +13,10 @@ function Checkout({ onClose }) {
           <input id="email" type="email" />
           <label htmlFor="street">Street</label>
           <input id="street" type="text" />
-          {/* <div className=" control control-row"> */}
           <label htmlFor="postal">Postal Code</label>
           <input id="postal" type="number" />
           <label htmlFor="city">City</label>
           <input id="city" type="text" />
-          {/* </div> */}
         </div>
         <div className="modal-actions">
           <button className="text-button" onClick={onClose}>
