@@ -4,21 +4,23 @@ export const ModalContext = createContext({
   modalState: false,
   handleModal: () => "",
   openCart: () => "",
+  handleSuccess: () => "",
 });
 function modalReducer(state, action) {
   switch (action.type) {
     case "showCheckout":
-      return true;
+      return "checkout";
     case "showCart":
-      return false;
+      return "cart";
+    case "success":
+      return "success";
 
     default:
       break;
   }
 }
 export function ModalContextProvider({ children }) {
-  // modalstate true for checkout false for cart
-  const [modalState, modalStateDispatch] = useReducer(modalReducer, false);
+  const [modalState, modalStateDispatch] = useReducer(modalReducer, "cart");
 
   function handleModal() {
     modalStateDispatch({
@@ -32,10 +34,17 @@ export function ModalContextProvider({ children }) {
     });
   }
 
+  function handleSuccess() {
+    modalStateDispatch({
+      type: "success",
+    });
+  }
+
   const modalContextValue = {
     modalState,
     handleModal,
     openCart,
+    handleSuccess,
   };
   return (
     <>

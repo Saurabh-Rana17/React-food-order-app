@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ModalContext } from "../store/ModalContext";
 
 function Checkout({ onClose }) {
+  const { handleSuccess } = useContext(ModalContext);
   return (
     <>
       <form method="dialog">
@@ -22,7 +24,9 @@ function Checkout({ onClose }) {
           <button className="text-button" onClick={onClose}>
             close
           </button>
-          <button className="button">Submit Order</button>
+          <button onClick={handleSuccess} type="button" className="button">
+            Submit Order
+          </button>
         </div>
       </form>
     </>

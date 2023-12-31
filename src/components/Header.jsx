@@ -5,7 +5,7 @@ import { createPortal } from "react-dom";
 import Checkout from "./Checkout";
 import { ModalContext } from "../store/ModalContext";
 import { OrderContext } from "../store/OrderContext";
-import calculateTotal from "../utils/calulateTotal";
+import Success from "./Success";
 
 function Header() {
   const { modalState, openCart } = useContext(ModalContext);
@@ -23,11 +23,9 @@ function Header() {
     <>
       {createPortal(
         <dialog className="modal " ref={modal}>
-          {modalState ? (
-            <Checkout onClose={handleClose} />
-          ) : (
-            <Cart onClose={handleClose} />
-          )}
+          {modalState === "cart" && <Cart onClose={handleClose} />}
+          {modalState === "checkout" && <Checkout onClose={handleClose} />}
+          {modalState === "success" && <Success onClose={handleClose} />}
         </dialog>,
         document.getElementById("modal")
       )}
