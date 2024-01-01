@@ -1,6 +1,29 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { OrderContext } from "../store/OrderContext";
 
 function Success({ onClose }) {
+  const { orderState } = useContext(OrderContext);
+  useEffect(() => {
+    async function postOrder() {
+      const order = {
+        items: orderState.orderArray,
+        customer: {
+          ...orderState.userDetail,
+        },
+      };
+      console.log(order);
+      const res = await fetch("http://localhost:3000/orders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ order }),
+      });
+      console.log(res.status);
+    }
+    postOrder();
+  }, [orderState]);
+
   return (
     <div>
       <h2>Success</h2>

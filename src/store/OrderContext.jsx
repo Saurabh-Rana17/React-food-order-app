@@ -72,7 +72,7 @@ export function OrderContextProvider({ children }) {
     userDetail: {},
     orderArray: [],
   });
-  // console.log(orderState);
+  console.log(orderState);
   function addToCart(id, name, price) {
     orderDispatch({
       type: "addToCart",

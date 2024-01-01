@@ -10,7 +10,6 @@ function Checkout({ onClose }) {
     event.preventDefault();
     const fd = new FormData(event.target);
     const data = Object.fromEntries(fd.entries());
-    console.log(data);
     handleDetails(data);
     handleSuccess();
   }
@@ -27,7 +26,7 @@ function Checkout({ onClose }) {
           <label htmlFor="street">Street</label>
           <input name="street" id="street" type="text" />
           <label htmlFor="postal">Postal Code</label>
-          <input name="postal" id="postal" type="number" />
+          <input name="postal-code" id="postal" type="number" />
           <label htmlFor="city">City</label>
           <input name="city" id="city" type="text" />
         </div>
