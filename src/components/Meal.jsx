@@ -2,10 +2,6 @@ import React, { useContext } from "react";
 import { OrderContext } from "../store/OrderContext";
 
 function Meal({ mealName, mealPrice, mealDescription, mealImg, id }) {
-  // mealPrice = new Intl.NumberFormat("en-US", {
-  //   style: "currency",
-  //   currency: "USD",
-  // }).format(mealPrice);
   const { addToCart } = useContext(OrderContext);
   return (
     <div className="meal-item ">
