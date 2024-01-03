@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { ModalContext } from "../store/ModalContext";
 import { OrderContext } from "../store/OrderContext";
+import Input from "./Input";
 
 function Checkout({ onClose }) {
   const { handleSuccess } = useContext(ModalContext);
@@ -19,16 +20,17 @@ function Checkout({ onClose }) {
         <h2>Checkout</h2>
         <p>Total Amount : $89.95</p>
         <div className="control">
-          <label htmlFor="name">Full Name</label>
-          <input id="name" name="name" type="text" />
-          <label htmlFor="email">E-mail Address</label>
-          <input name="email" id="email" type="email" />
-          <label htmlFor="street">Street</label>
-          <input name="street" id="street" type="text" />
-          <label htmlFor="postal">Postal Code</label>
-          <input name="postal-code" id="postal" type="number" />
+          <Input id="name" lable="Full Name" type="text" />
+          <Input id="email" lable="E-mail Address" type="email" />
+          <Input id="street" lable="Street" type="text" />
+          <Input id="postal-code" lable="Postal Code" type="number" />
+          <Input id="city" lable="City" type="text" />
+          {/* 
+          
+          
+          
           <label htmlFor="city">City</label>
-          <input name="city" id="city" type="text" />
+          <input required name="city" id="city" type="text" /> */}
         </div>
         <div className="modal-actions">
           <button className="text-button" onClick={onClose}>

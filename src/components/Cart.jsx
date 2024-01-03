@@ -8,6 +8,14 @@ function Cart({ onClose }) {
   const { handleModal } = useContext(ModalContext);
   const { orderState } = useContext(OrderContext);
   const total = calculateTotal(orderState.orderArray);
+  function handleCheckout() {
+    if (total > 0) {
+      handleModal();
+    } else {
+      alert("your cart is empty");
+      onClose();
+    }
+  }
   return (
     <>
       <div className="cart" method="dialog">
@@ -31,7 +39,7 @@ function Cart({ onClose }) {
           <button onClick={onClose} className=" text-button">
             close
           </button>
-          <button onClick={handleModal} className="button" type="button">
+          <button onClick={handleCheckout} className="button" type="button">
             Go to Checkout
           </button>
         </div>

@@ -11,7 +11,6 @@ function Success({ onClose }) {
           ...orderState.userDetail,
         },
       };
-      console.log(order);
       const res = await fetch("http://localhost:3000/orders", {
         method: "POST",
         headers: {
@@ -19,7 +18,6 @@ function Success({ onClose }) {
         },
         body: JSON.stringify({ order }),
       });
-      console.log(res.status);
     }
     postOrder();
   }, [orderState]);
