@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { OrderContext } from "../store/OrderContext";
 
 function Success({ onClose }) {
-  const { orderState } = useContext(OrderContext);
+  const { orderState, clearOrder } = useContext(OrderContext);
   useEffect(() => {
     async function postOrder() {
       const order = {
@@ -18,9 +18,11 @@ function Success({ onClose }) {
         },
         body: JSON.stringify({ order }),
       });
+      clearOrder();
     }
     postOrder();
-  }, [orderState]);
+    return () => {};
+  }, []);
 
   return (
     <div>

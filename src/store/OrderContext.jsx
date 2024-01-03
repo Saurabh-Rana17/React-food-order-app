@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useCallback, useReducer } from "react";
 
 export const OrderContext = createContext({
   orderState: {},
@@ -7,6 +7,7 @@ export const OrderContext = createContext({
   decreaseQuantity: () => "",
   removeItem: () => "",
   handleDetails: () => "",
+  clearOrder: () => "",
 });
 
 function orderReducer(orderState, action) {
@@ -60,6 +61,11 @@ function orderReducer(orderState, action) {
       return {
         ...orderState,
         userDetail: action.payload.details,
+      };
+    case "clearOrder":
+      return {
+        userDetail: {},
+        orderArray: [],
       };
 
     default:
@@ -120,6 +126,11 @@ export function OrderContextProvider({ children }) {
     });
   }
 
+  const clearOrder = useCallback(function clearOrder() {
+    orderDispatch({
+      type: "clearOrder",
+    });
+  }, []);
   const orderContextValue = {
     orderState,
     addToCart,
@@ -127,6 +138,7 @@ export function OrderContextProvider({ children }) {
     decreaseQuantity,
     removeItem,
     handleDetails,
+    clearOrder,
   };
 
   return (
