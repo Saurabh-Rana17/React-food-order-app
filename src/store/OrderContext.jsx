@@ -18,7 +18,15 @@ function orderReducer(orderState, action) {
         (item) => item.id === action.payload.id
       );
       if (alreadyExist.length === 1) {
-        return orderState;
+        const newArr = orderState.orderArray.map((item) => {
+          if (item.id === action.payload.id) {
+            const newItem = { ...item, quantity: item.quantity + 1 };
+            return newItem;
+          } else {
+            return item;
+          }
+        });
+        return { ...orderState, orderArray: newArr };
       }
       const orderObj = {
         id: action.payload.id,
@@ -78,7 +86,9 @@ export function OrderContextProvider({ children }) {
     userDetail: {},
     orderArray: [],
   });
+
   console.log(orderState);
+
   function addToCart(id, name, price) {
     orderDispatch({
       type: "addToCart",

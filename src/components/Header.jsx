@@ -6,6 +6,7 @@ import Checkout from "./Checkout";
 import { ModalContext } from "../store/ModalContext";
 import { OrderContext } from "../store/OrderContext";
 import Success from "./Success";
+import { calculateTotalCartItem } from "../utils/calculateTotalCartItem";
 
 function Header() {
   const { modalState, openCart } = useContext(ModalContext);
@@ -19,6 +20,9 @@ function Header() {
     modal.current.close();
     openCart();
   }
+
+  const totalItem = calculateTotalCartItem(orderState.orderArray);
+  console.log(totalItem);
   return (
     <>
       {createPortal(
@@ -35,7 +39,7 @@ function Header() {
           REACTFOOD
         </h1>
         <button onClick={handleClick} className="text-button">
-          Cart({orderState.orderArray.length})
+          Cart({totalItem})
         </button>
       </div>
     </>
