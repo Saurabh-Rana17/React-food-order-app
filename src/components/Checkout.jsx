@@ -25,20 +25,12 @@ function Checkout({ onClose }) {
           <Input id="street" lable="Street" type="text" />
           <Input id="postal-code" lable="Postal Code" type="number" />
           <Input id="city" lable="City" type="text" />
-          {/* 
-          
-          
-          
-          <label htmlFor="city">City</label>
-          <input required name="city" id="city" type="text" /> */}
         </div>
         <div className="modal-actions">
           <button className="text-button" onClick={onClose}>
             close
           </button>
-          <button type="submit" className="button">
-            Submit Order
-          </button>
+          <button className="button">Submit Order</button>
         </div>
       </form>
     </>
