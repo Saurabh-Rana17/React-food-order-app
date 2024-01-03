@@ -3,6 +3,7 @@ import CartItem from "./CartItem";
 import { ModalContext } from "../store/ModalContext";
 import { OrderContext } from "../store/OrderContext";
 import calculateTotal from "../utils/calulateTotal";
+import Button from "./Button";
 
 function Cart({ onClose }) {
   const { handleModal } = useContext(ModalContext);
@@ -39,9 +40,12 @@ function Cart({ onClose }) {
           <button onClick={onClose} className=" text-button">
             close
           </button>
-          <button onClick={handleCheckout} className="button" type="button">
+          {/* <button onClick={handleCheckout} className="button" type="button">
             Go to Checkout
-          </button>
+          </button> */}
+          <Button onClick={handleCheckout} className="button" type="button">
+            Go to Checkout
+          </Button>
         </div>
       </div>
     </>

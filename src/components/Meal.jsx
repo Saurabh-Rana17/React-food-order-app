@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { OrderContext } from "../store/OrderContext";
+import Button from "./Button";
 
 function Meal({ mealName, mealPrice, mealDescription, mealImg, id }) {
   const { addToCart } = useContext(OrderContext);
@@ -10,12 +11,18 @@ function Meal({ mealName, mealPrice, mealDescription, mealImg, id }) {
       <div className="meal-item-price">${mealPrice}</div>
       <div className="meal-item-actions">
         <p className="item-description">{mealDescription}</p>
-        <button
+        {/* <button
           onClick={() => addToCart(id, mealName, mealPrice)}
           className="button "
         >
           Add to Cart
-        </button>
+        </button> */}
+        <Button
+          onClick={() => addToCart(id, mealName, mealPrice)}
+          className="button"
+        >
+          Add to Cart
+        </Button>
       </div>
     </div>
   );

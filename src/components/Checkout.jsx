@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { ModalContext } from "../store/ModalContext";
 import { OrderContext } from "../store/OrderContext";
 import Input from "./Input";
+import Button from "./Button";
 
 function Checkout({ onClose }) {
   const { handleSuccess } = useContext(ModalContext);
@@ -30,7 +31,8 @@ function Checkout({ onClose }) {
           <button className="text-button" onClick={onClose}>
             close
           </button>
-          <button className="button">Submit Order</button>
+          {/* <button className="button">Submit Order</button> */}
+          <Button className="button">Submit Order</Button>
         </div>
       </form>
     </>
