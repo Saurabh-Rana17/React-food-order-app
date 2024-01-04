@@ -22,7 +22,6 @@ function Header() {
   }
 
   const totalItem = calculateTotalCartItem(orderState.orderArray);
-  console.log(totalItem);
   return (
     <>
       {createPortal(

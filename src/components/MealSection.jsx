@@ -1,31 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Meal from "./Meal";
+import useFetch from "../utils/useFetch";
 
 function MealSection() {
-  const [mealsArray, setMealsArray] = useState([]);
-  const [isError, setIsError] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    async function fetchMeals() {
-      setIsLoading(true);
-      try {
-        const response = await fetch("http://localhost:3000/meals");
-
-        const data = await response.json();
-        setMealsArray(data);
-      } catch (error) {
-        setIsError(true);
-      }
-      setIsLoading(false);
-    }
-
-    fetchMeals();
-  }, []);
+  const { isError, isLoading, mealsArray } = useFetch();
   return (
-    <div id="meals">
+    <ul id="meals">
       {isLoading && <p>loading data...</p>}
       {isError && <p>error fetching</p>}
+
       {!isError &&
         mealsArray.map((item) => {
           return (
@@ -39,7 +22,7 @@ function MealSection() {
             />
           );
         })}
-    </div>
+    </ul>
   );
 }
 
