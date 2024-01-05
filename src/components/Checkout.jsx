@@ -3,10 +3,12 @@ import { ModalContext } from "../store/ModalContext";
 import { OrderContext } from "../store/OrderContext";
 import Input from "./Input";
 import Button from "./Button";
+import calculateTotal from "../utils/calulateTotal";
 
 function Checkout({ onClose }) {
   const { handleSuccess } = useContext(ModalContext);
-  const { handleDetails } = useContext(OrderContext);
+  const { handleDetails, orderState } = useContext(OrderContext);
+  const total = calculateTotal(orderState.orderArray);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -19,7 +21,7 @@ function Checkout({ onClose }) {
     <>
       <form id="form" onSubmit={handleSubmit}>
         <h2>Checkout</h2>
-        <p>Total Amount : $89.95</p>
+        <p>Total Amount : ${total}</p>
         <div className="control">
           <Input id="name" lable="Full Name" type="text" />
           <Input id="email" lable="E-mail Address" type="email" />

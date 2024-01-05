@@ -43,9 +43,11 @@ function Cart({ onClose }) {
           {/* <button onClick={handleCheckout} className="button" type="button">
             Go to Checkout
           </button> */}
-          <Button onClick={handleCheckout} className="button" type="button">
-            Go to Checkout
-          </Button>
+          {orderState.orderArray.length > 0 && (
+            <Button onClick={handleCheckout} className="button" type="button">
+              Go to Checkout
+            </Button>
+          )}
         </div>
       </div>
     </>
